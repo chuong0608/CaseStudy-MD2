@@ -29,20 +29,20 @@ public class StaffManage implements InterfaceGenara<Staff>, InterfaceStaff<Staff
     }
 
     @Override
-    public void edit(int id, Staff staff) {
-        staffList.set(findById(id),staff);
+    public void edit(String name, Staff staff) {
+        staffList.set(findByName(name),staff);
     }
 
     @Override
-    public void delete(int id) {
-        staffList.remove(findById(id));
+    public void delete(String name) {
+        staffList.remove(findByName(name));
 
     }
 
     @Override
-    public int findById(int id) {
+    public int findByName(String name) {
         for (int i = 0; i < staffList.size(); i++) {
-            if(staffList.get(i).getId()==id){
+            if(staffList.get(i).getNameStaff().contains(name)){
                 return i;
             }
         }
@@ -88,7 +88,7 @@ public class StaffManage implements InterfaceGenara<Staff>, InterfaceStaff<Staff
     }
 
     @Override
-    public void findByName(String name) {
+    public void printByName(String name) {
         for (int i = 0; i < staffList.size(); i++) {
             if (staffList.get(i).getNameStaff().contains(name)){
                 System.out.println(staffList.get(i));

@@ -2,8 +2,8 @@ package interfaces;
 
 public interface InterfaceGenara<T> {
     void add(T t);
-    void edit(int id,T t);
-    void delete(int id);
-    int findById(int id);
+    void edit(String name,T t);
+    void delete(String name);
+    int findByName(String name);
     void printAll();
 }
