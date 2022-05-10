@@ -7,26 +7,38 @@ import manage.StaffManage;
 import model.Account;
 import model.Staff;
 
+
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class Main {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
     public static void main(String[] args) throws IOException {
+
         AccountManage accountManage = new AccountManage();
         StaffManage staffManage = new StaffManage();
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         while (choice != 0) {
-            System.out.println("-----------Menu----------");
+            System.out.println(ANSI_CYAN+"-----------Menu----------");
             System.out.println("1.       Đăng nhập       ");
             System.out.println("2.        Đăng kí        ");
-            System.out.println("Nhập lựa chọn !    ");
+            System.out.println("Nhập lựa chọn !     "+ANSI_RESET);
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    System.out.println("Đăng nhập ");
+                    System.out.println( "Đăng nhập ");
                     System.out.println("Nhập vào tên tài khoản ");
                     String name = scanner.nextLine();
                     System.out.println("Nhập vào password ");
@@ -154,7 +166,7 @@ public class Main {
                                     System.out.println("╚===================================================╝");
                                     System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
                                     int choice1 = scanner.nextInt();
-                                    if (choice1 < 0 || choice1 > 7) {
+                                    if (choice1 < 0 || choice1 > 3) {
                                         System.out.println();
                                         System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                                         System.out.println("--------------------");
@@ -163,8 +175,10 @@ public class Main {
                                     switch (choice1) {
                                         case 1:{
                                             System.out.println("Nhập tên nhân viên");
+                                            scanner.nextLine();
                                             String nameStaff = scanner.nextLine();
                                             accountManage.findByNameAccount(nameStaff);
+                                            break;
                                         }
                                         case 2: {
                                             System.out.println("Nhập  số điện thoại mới");
@@ -178,6 +192,7 @@ public class Main {
                                             String newName= scanner.nextLine();
                                             AccountManage.currentAccount.setFullname(newName);
                                             FileAccountCSV.writeToFile(accountManage.getAccountList());
+                                            break;
                                         }
                                         case 3:{
                                             System.out.println("Đổi mật khẩu ");

@@ -82,12 +82,11 @@ public class AccountManage implements InterfaceGenara<Account>, InterfaceAccount
     }
 
     @Override
-    public Account findByNameAccount(String accountName) {
+    public void findByNameAccount(String accountName) {
         for (int i = 0; i < accountList.size(); i++) {
             if (accountList.get(i).getNameAccount().equals(accountName)) {
-                return accountList.get(i);
+                System.out.println(accountList.get(i));
             }
         }
-        return null;
     }
 }

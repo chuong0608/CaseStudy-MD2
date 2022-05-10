@@ -5,6 +5,6 @@ public interface InterfaceAccount<T> {
 
     void checkAcount(String nameAccount);
 
-    T findByNameAccount(String accountName);
+    void findByNameAccount(String accountName);
 
 }
