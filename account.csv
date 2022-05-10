@@ -1,7 +1,5 @@
 nameAcount,password,numberPhone,email,fullName,age,role
 Hoang Chuong,123abc,0348005557,abc@gmail.com,Hoàng Chương,22,Admin
-
 yen,123abc,9090596053,xyz@gmail.com,Hải Yến,22,User
-
 yen,123abc,9090596053,xyz@gmail.com,Hải Yến,22,User
-
+Anh,123,0986305234,kasdk@gmail.com,Hoang  Anh,18,user

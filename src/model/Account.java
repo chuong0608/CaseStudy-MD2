@@ -22,6 +22,7 @@ public class Account {
         this.role = role;
     }
 
+
     public String getNameAccount() {
         return nameAccount;
     }
@@ -80,10 +81,10 @@ public class Account {
 
     @Override
     public String toString() {
-        return  nameAccount  +
+        return nameAccount +
                 "," + password +
                 "," + numberPhone +
-                "," + email  +
+                "," + email +
                 "," + fullname +
                 "," + age +
                 "," + role +

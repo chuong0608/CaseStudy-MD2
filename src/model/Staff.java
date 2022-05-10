@@ -3,26 +3,32 @@ package model;
 public class Staff {
     private int id;
     private String nameStaff;
-    private String ageStaff;
-    private long CMND;
+    private int ageStaff;
+    private String cmnd;
     private String type;
     private String status;
     private String address;
     private int numberOfWorkDay;
-    private long monthlySalary;
+    private Double monthlySalary;
 
-    public Staff(int id, String nameStaff, String ageStaff,
-                 long CMND, String type, String status, String address, int numberOfWorkDay,
-                  long monthlySalary) {
+    public Staff(int id, String nameStaff, int ageStaff,
+                 String cmnd, String type, String status, String address,
+                 int numberOfWorkDay) {
         this.id = id;
         this.nameStaff = nameStaff;
         this.ageStaff = ageStaff;
-        this.CMND = CMND;
+        this.cmnd = cmnd;
         this.type = type;
         this.status = status;
         this.address = address;
         this.numberOfWorkDay = numberOfWorkDay;
-        this.monthlySalary = monthlySalary;
+        this.monthlySalary = 1d;
+        if (this.type.equalsIgnoreCase("thợ chính")) {
+            this.monthlySalary = (double) (this.numberOfWorkDay * 350000);
+        } else if (this.type.equalsIgnoreCase("thợ phụ")) {
+            this.monthlySalary = (double) (this.numberOfWorkDay * 250000);
+        }
+
     }
 
     public Staff() {
@@ -44,20 +50,20 @@ public class Staff {
         this.nameStaff = nameStaff;
     }
 
-    public String getAgeStaff() {
+    public int getAgeStaff() {
         return ageStaff;
     }
 
-    public void setAgeStaff(String ageStaff) {
+    public void setAgeStaff(int ageStaff) {
         this.ageStaff = ageStaff;
     }
 
-    public long getCMND() {
-        return CMND;
+    public String getCmnd() {
+        return cmnd;
     }
 
-    public void setCMND(long CMND) {
-        this.CMND = CMND;
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
     public String getType() {
@@ -91,23 +97,23 @@ public class Staff {
     public void setNumberOfWorkDay(int numberOfWorkDay) {
         this.numberOfWorkDay = numberOfWorkDay;
     }
-    public long getMonthlySalary() {
-        if(type.equals("thợ chính")) {
-            return numberOfWorkDay * 350000;
-        }
-        else if(type.equals("thợ phụ")){
-            return numberOfWorkDay*250000;
-        }
-        return 0;
+
+    public Double getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
     }
 
     @Override
     public String toString() {
         return id +
                 "," + nameStaff +
-                "," + ageStaff + '\'' +
-                "," + CMND +
+                "," + ageStaff +
+                "," + cmnd +
                 "," + type +
+                "," + status +
                 "," + address +
                 "," + numberOfWorkDay +
                 "," + monthlySalary +
