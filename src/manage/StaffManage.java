@@ -46,7 +46,7 @@ public class StaffManage implements InterfaceGenara<Staff>, InterfaceStaff<Staff
     @Override
     public int findByName(String name) {
         for (int i = 0; i < staffList.size(); i++) {
-            if (staffList.get(i).getNameStaff().contains(name)) {
+            if (staffList.get(i).getNameStaff().equals(name)) {
                 return i;
             }
         }
@@ -78,16 +78,15 @@ public class StaffManage implements InterfaceGenara<Staff>, InterfaceStaff<Staff
                 System.out.println(staffList.get(i));
             }
         }
-
     }
 
     @Override
     public void printDiligence(String name) {
-        for (int i = 0; i < staffList.size(); i++) {
-            if (staffList.get(i).getType().equals(name)) {
-                System.out.println(staffList.get(i).getNumberOfWorkDay());
-            }
-        }
+//        for (int i = 0; i < staffList.size(); i++) {
+//            if (staffList.get(i).getType().equals(name)) {
+//                System.out.println(staffList.get(i).getNumberOfWorkDay());
+//            }
+//        }
 
     }
 

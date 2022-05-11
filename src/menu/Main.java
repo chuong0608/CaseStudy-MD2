@@ -16,6 +16,10 @@ public class Main {
         AccountManage accountManage = new AccountManage();
         StaffManage staffManage = new StaffManage();
         Scanner scanner = new Scanner(System.in);
+//        System.out.println("Nhập :");
+//        String name = scanner.nextLine();
+//        System.out.println(staffManage.findByName(name));
+//        staffManage.printAll();
         int choice = -1;
         while (choice != 0) {
             System.out.println("-----------Menu----------");
@@ -58,7 +62,6 @@ public class Main {
                                     }
                                     switch (choice1) {
                                         case 1:
-
                                             System.out.println("Nhập id: ");
                                             int id = scanner.nextInt();
                                             scanner.nextLine();
@@ -81,24 +84,29 @@ public class Main {
                                             FileStaffCSV.writeToFile(staffManage.getStaffList());
                                             break;
                                         case 2:
+                                            scanner.nextLine();
                                             System.out.println("Nhập nhân viên muốn tìm kiếm : ");
                                             String nameFind = scanner.nextLine();
                                             staffManage.printByName(nameFind);
                                             break;
                                         case 3:
+                                            scanner.nextLine();
                                             System.out.println("Nhập tên nhân viên muốn xóa:");
                                             String nameDelete = scanner.nextLine();
                                             staffManage.delete(nameDelete);
+                                            FileStaffCSV.writeToFile(staffManage.getStaffList());
                                             break;
                                         case 4:
                                             staffManage.printAll();
                                             break;
                                         case 5:
+                                            scanner.nextLine();
                                             System.out.println("Nhập tên nhân viên muốn kiểm tra:");
                                             String checkStatus = scanner.nextLine();
                                             staffManage.checkStatus(checkStatus);
                                             break;
                                         case 6:
+                                            scanner.nextLine();
                                             System.out.println("Nhập tên nhân viên muốn sửa:");
                                             String nameEdit = scanner.nextLine();
                                             System.out.println("Nhập id: ");
@@ -124,12 +132,13 @@ public class Main {
                                             FileStaffCSV.writeToFile(staffManage.getStaffList());
                                             break;
                                         case 7:
+                                            scanner.nextLine();
                                             System.out.println("Đổi mật khẩu ");
                                             scanner.nextLine();
                                             String newPass = scanner.nextLine();
                                             AccountManage.currentAccount.setPassword(newPass);
                                             System.out.println("Đổi mật khẩu thành công ! ");
-                                            FileStaffCSV.writeToFile(staffManage.getStaffList());
+                                            FileAccountCSV.writeToFile(accountManage.getAccountList());
                                             break;
                                         case 0:
                                             AccountManage.currentAccount = null;
@@ -162,11 +171,13 @@ public class Main {
                                     }
                                     switch (choice1) {
                                         case 1:{
+                                            scanner.nextLine();
                                             System.out.println("Nhập tên nhân viên");
                                             String nameStaff = scanner.nextLine();
                                             accountManage.findByNameAccount(nameStaff);
                                         }
                                         case 2: {
+                                            scanner.nextLine();
                                             System.out.println("Nhập  số điện thoại mới");
                                             scanner.nextLine();
                                             String numberPhone= scanner.nextLine();
@@ -180,6 +191,7 @@ public class Main {
                                             FileAccountCSV.writeToFile(accountManage.getAccountList());
                                         }
                                         case 3:{
+                                            scanner.nextLine();
                                             System.out.println("Đổi mật khẩu ");
                                             scanner.nextLine();
                                             String newPass = scanner.nextLine();
