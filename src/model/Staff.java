@@ -4,7 +4,7 @@ public class Staff {
     private int id;
     private String nameStaff;
     private int ageStaff;
-    private String cmnd;
+    private String identity;
     private String type;
     private String status;
     private String address;
@@ -17,7 +17,7 @@ public class Staff {
         this.id = id;
         this.nameStaff = nameStaff;
         this.ageStaff = ageStaff;
-        this.cmnd = cmnd;
+        this.identity = cmnd;
         this.type = type;
         this.status = status;
         this.address = address;
@@ -59,11 +59,11 @@ public class Staff {
     }
 
     public String getCmnd() {
-        return cmnd;
+        return identity;
     }
 
     public void setCmnd(String cmnd) {
-        this.cmnd = cmnd;
+        this.identity = cmnd;
     }
 
     public String getType() {
@@ -111,7 +111,7 @@ public class Staff {
         return id +
                 "," + nameStaff +
                 "," + ageStaff +
-                "," + cmnd +
+                "," + identity +
                 "," + type +
                 "," + status +
                 "," + address +
