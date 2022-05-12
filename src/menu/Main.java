@@ -7,6 +7,7 @@ import manage.StaffManage;
 import model.Account;
 import model.Staff;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class Main {
 //        System.out.println("Nhập :");
 //        String name = scanner.nextLine();
 //        System.out.println(staffManage.findByName(name));
-//        staffManage.printAll();
+//          staffManage.printAll();
         int choice = -1;
         while (choice != 0) {
             System.out.println("-----------Menu----------");
@@ -36,9 +37,11 @@ public class Main {
                     System.out.println("Nhập vào password ");
                     String pass = scanner.nextLine();
                     accountManage.login(name, pass);
+                    System.out.println("Đăng nhập thành công!");
                     if (accountManage.login(name, pass) == 1) {
                         if (AccountManage.currentAccount.getRole().equalsIgnoreCase("Admin")) {
                             try {
+                                int choice1 = -1;
                                 do {
                                     System.out.println("╔===================================================╗");
                                     System.out.println("║       ▂ ▃ ▅ ▆ █ QUẢN LÝ NHÂN VIÊN █ ▆ ▅ ▃ ▂       ║");
@@ -53,7 +56,7 @@ public class Main {
                                     System.out.println("║>[0]. Logout                                        ║");
                                     System.out.println("╚===================================================╝");
                                     System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                                    int choice1 = scanner.nextInt();
+                                    choice1 = scanner.nextInt();
                                     if (choice1 < 0 || choice1 > 7) {
                                         System.out.println();
                                         System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
@@ -72,9 +75,9 @@ public class Main {
                                             scanner.nextLine();
                                             System.out.println("Nhập vào số CMND/CCCD : ");
                                             String identity = scanner.nextLine();
-                                            System.out.println("Nhập loại công việc :  ");
+                                            System.out.println("Nhập loại công việc(Thợ chính/Thợ phụ) :  ");
                                             String type = scanner.nextLine();
-                                            System.out.println("Nhập trạng thái làm việc : ");
+                                            System.out.println("Nhập trạng thái làm việc(Đang làm//Nghỉ) : ");
                                             String status = scanner.nextLine();
                                             System.out.println("Nhập địa chỉ : ");
                                             String address = scanner.nextLine();
@@ -82,6 +85,7 @@ public class Main {
                                             int numberOfWorkDay = scanner.nextInt();
                                             staffManage.add(new Staff(id, nameStaff, ageStaff, identity, type, status, address, numberOfWorkDay));
                                             FileStaffCSV.writeToFile(staffManage.getStaffList());
+                                            System.out.println("Đã thêm nhân viên vào danh sách!");
                                             break;
                                         case 2:
                                             scanner.nextLine();
@@ -94,6 +98,7 @@ public class Main {
                                             System.out.println("Nhập tên nhân viên muốn xóa:");
                                             String nameDelete = scanner.nextLine();
                                             staffManage.delete(nameDelete);
+                                            System.out.println("Đã xóa!");
                                             FileStaffCSV.writeToFile(staffManage.getStaffList());
                                             break;
                                         case 4:
@@ -119,9 +124,9 @@ public class Main {
                                             scanner.nextLine();
                                             System.out.println("Nhập vào số CMND/CCCD : ");
                                             String identityEdit = scanner.nextLine();
-                                            System.out.println("Nhập loại công việc :  ");
+                                            System.out.println("Nhập loại công việc(Thợ chính/Thợ phụ) :  ");
                                             String typeEdit = scanner.nextLine();
-                                            System.out.println("Nhập trạng thái làm việc : ");
+                                            System.out.println("Nhập trạng thái làm việc (Đang làm/Nghỉ) : ");
                                             String statusEdit = scanner.nextLine();
                                             System.out.println("Nhập địa chỉ : ");
                                             String addressEdit = scanner.nextLine();
@@ -130,20 +135,22 @@ public class Main {
                                             staffManage.edit(nameEdit, new Staff(idEdit, nameStaffEdit, ageStaffEdit,
                                                     identityEdit, typeEdit, statusEdit, addressEdit, numberOfWorkDayEdit));
                                             FileStaffCSV.writeToFile(staffManage.getStaffList());
+                                            System.out.println("Đã sửa! ");
                                             break;
                                         case 7:
                                             scanner.nextLine();
                                             System.out.println("Đổi mật khẩu ");
-                                            scanner.nextLine();
+                                            System.out.println("Nhập mật khẩu mới");
                                             String newPass = scanner.nextLine();
                                             AccountManage.currentAccount.setPassword(newPass);
                                             System.out.println("Đổi mật khẩu thành công ! ");
                                             FileAccountCSV.writeToFile(accountManage.getAccountList());
                                             break;
                                         case 0:
-                                            AccountManage.currentAccount = null;
+                                            System.out.println("Quay lại");
+                                            break;
                                     }
-                                } while (true);
+                                } while (choice1 != 0);
                             } catch (NumberFormatException | InputMismatchException e) {
                                 System.out.println();
                                 System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
@@ -152,45 +159,44 @@ public class Main {
                             }
                         } else {
                             try {
+                                int choice2 = -1;
                                 do {
                                     System.out.println("╔===================================================╗");
                                     System.out.println("║       ▂ ▃ ▅ ▆ █ MENU NHÂN VIÊN █ ▆ ▅ ▃ ▂          ║");
                                     System.out.println("╠===================================================╣");
-                                    System.out.println("║>[1]. Xem thông tin tài khoản                      ║");
+                                    System.out.println("║>[1]. Xem thông tin                                ║");
                                     System.out.println("║>[2]. Sửa thông tin                                ║");
                                     System.out.println("║>[3]. Đổi mật khẩu                                 ║");
                                     System.out.println("║>[0]. Thoát                                        ║");
                                     System.out.println("╚===================================================╝");
                                     System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                                    int choice1 = scanner.nextInt();
-                                    if (choice1 < 0 || choice1 > 7) {
+                                    choice2 = scanner.nextInt();
+                                    if (choice2 < 1 || choice2 > 3) {
                                         System.out.println();
                                         System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                                         System.out.println("--------------------");
                                         System.out.println();
                                     }
-                                    switch (choice1) {
-                                        case 1:{
-                                            scanner.nextLine();
-                                            System.out.println("Nhập tên nhân viên");
-                                            String nameStaff = scanner.nextLine();
-                                            accountManage.findByNameAccount(nameStaff);
+                                    switch (choice2) {
+                                        case 1: {
+                                            staffManage.printAll();
+                                            break;
                                         }
                                         case 2: {
-                                            scanner.nextLine();
                                             System.out.println("Nhập  số điện thoại mới");
                                             scanner.nextLine();
-                                            String numberPhone= scanner.nextLine();
+                                            String numberPhone = scanner.nextLine();
                                             AccountManage.currentAccount.setNumberPhone(numberPhone);
                                             System.out.println("Nhập email mới");
                                             String newEmail = scanner.nextLine();
                                             AccountManage.currentAccount.setFullname(newEmail);
                                             System.out.println("Nhập  họ tên mới");
-                                            String newName= scanner.nextLine();
+                                            String newName = scanner.nextLine();
                                             AccountManage.currentAccount.setFullname(newName);
                                             FileAccountCSV.writeToFile(accountManage.getAccountList());
+                                            break;
                                         }
-                                        case 3:{
+                                        case 3: {
                                             scanner.nextLine();
                                             System.out.println("Đổi mật khẩu ");
                                             scanner.nextLine();
@@ -200,11 +206,11 @@ public class Main {
                                             FileStaffCSV.writeToFile(staffManage.getStaffList());
                                             break;
                                         }
-                                        case 0:{
-                                            AccountManage.currentAccount=null;
-                                        }
+                                        case 0:
+                                            System.out.println("quay lại");
+                                            break;
                                     }
-                                }while (true);
+                                } while (choice != 0);
                             } catch (NumberFormatException | InputMismatchException e) {
                                 System.out.println();
                                 System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
@@ -230,11 +236,11 @@ public class Main {
                     System.out.println("Nhập vào tuổi ");
                     int age = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.println("Nhập vào quyền truy cập ");
+                    System.out.println("Nhập vào quyền truy cập(Admin/User) ");
                     String role = scanner.nextLine();
                     Account account = new Account(nameAccount, password, numberPhone, email, fullname, age, role);
                     accountManage.add(account);
-                    System.out.println("Đăng ký thành công");
+                    System.out.println("Đăng ký thành công! ");
                     FileAccountCSV.writeToFile(accountManage.getAccountList());
                     break;
             }

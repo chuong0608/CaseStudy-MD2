@@ -1,3 +1,5 @@
 id,nameStaff,ageStaff,CMND,type,status,address,numberOfWorkDay,monthlySalary
 1,Hưng,40,12345575,Thợ chính,Đang làm,Hưng yên,26,9100000.0
-2,Phong,30,3945728505,Thợ phụ,Đang làm,Phú thọ,26,6500000.0
+2,Phong,31,34792413291,Thợ phụ,Nghỉ,PT,0,0.0
+3,Huy,26,203974868192,Thợ chính,ĐAng làm,ND,23,8050000.0
+1,,21,123,thợ chính,1,hatinh,20,7000000.0
