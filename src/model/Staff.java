@@ -12,12 +12,12 @@ public class Staff {
     private Double monthlySalary;
 
     public Staff(int id, String nameStaff, int ageStaff,
-                 String cmnd, String type, String status, String address,
+                 String identity, String type, String status, String address,
                  int numberOfWorkDay) {
         this.id = id;
         this.nameStaff = nameStaff;
         this.ageStaff = ageStaff;
-        this.identity = cmnd;
+        this.identity = identity;
         this.type = type;
         this.status = status;
         this.address = address;
@@ -58,12 +58,12 @@ public class Staff {
         this.ageStaff = ageStaff;
     }
 
-    public String getCmnd() {
+    public String getIdentity() {
         return identity;
     }
 
-    public void setCmnd(String cmnd) {
-        this.identity = cmnd;
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     public String getType() {
